@@ -8,14 +8,6 @@ const Portfolio = lazy(() => import('./Portfolio.jsx'))
 const Contact = lazy(() => import('./Contact.tsx'))
 const Spotlight = lazy(() => import('./ui/Spotlight.tsx'))
 
-const items = [
-  {
-    title: 'CalorieMate',
-    description: 'A React-based SPA to track daily calorie intake.',
-    header: <h3>Project</h3>,
-  },
-]
-
 const Page = () => {
   const [showPortfolio, setShowPortfolio] = useState(false)
   const [showContact, setShowContact] = useState(false)
@@ -77,42 +69,41 @@ const Page = () => {
 
         {/* Portfolio Section */}
         <section id="portfolio" className="py-20" ref={portfolioRef}>
-         <div className="max-w-6xl mx-auto px-4">
-
-          <Suspense
-            fallback={
-              <div className="min-h-[500px] text-center py-12">
-                Loading portfolio...
-              </div>
-            }
-          >
-            {showPortfolio ? (
-              <>
-                <Portfolio items={items} />
-              </>
-            ) : (
-              <div style={{ height: '500px' }} aria-hidden="true" />
-            )}
-          </Suspense>
+          <div className="max-w-6xl mx-auto px-4">
+            <Suspense
+              fallback={
+                <div className="min-h-[500px] text-center py-12">
+                  Loading portfolio...
+                </div>
+              }
+            >
+              {showPortfolio ? (
+                <>
+                  <Portfolio />
+                </>
+              ) : (
+                <div style={{ height: '500px' }} aria-hidden="true" />
+              )}
+            </Suspense>
           </div>
         </section>
 
         {/* Contact Section */}
         <section id="contact" className="py-20" ref={contactRef}>
           <div className="max-w-6xl mx-auto px-4">
-          <Suspense
-            fallback={
-              <div className="min-h-[400px] text-center py-12">
-                Loading contact...
-              </div>
-            }
-          >
-            {showContact ? (
-              <Contact />
-            ) : (
-              <div style={{ height: '400px' }} aria-hidden="true" />
-            )}
-          </Suspense>
+            <Suspense
+              fallback={
+                <div className="min-h-[400px] text-center py-12">
+                  Loading contact...
+                </div>
+              }
+            >
+              {showContact ? (
+                <Contact />
+              ) : (
+                <div style={{ height: '400px' }} aria-hidden="true" />
+              )}
+            </Suspense>
           </div>
         </section>
       </main>
