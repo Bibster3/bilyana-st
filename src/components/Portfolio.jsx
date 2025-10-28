@@ -5,6 +5,7 @@ import crayonStoryImage from '../assets/your-crayon-story.png'
 import candyForestImage from '../assets/candy-forest.png'
 import dutchShuffleboardImage from '../assets/dutch-shuffleboard.png'
 import friendscapeImage from '../assets/friendscape.png'
+import ImageModal from './ImageModal'
 
 const Portfolio = () => {
   const projects = [
@@ -13,7 +14,15 @@ const Portfolio = () => {
       description:
         'Your Crayon Story is an interactive web app where children can create and personalize their own coloring books. Built with React, TypeScript, Tailwind CSS, and Supabase, it combines storytelling, creativity, and technology to turn imagination into printable art.',
       imageUrl: crayonStoryImage,
-      technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Supabase'],
+      technologies: [
+        'React',
+        'TypeScript',
+        'Tailwind CSS',
+        'HTML',
+        'Supabase',
+        'GitHub',
+        'Photoshop',
+      ],
     },
     {
       title: 'CalorieMate',
@@ -22,7 +31,17 @@ const Portfolio = () => {
       websiteUrl: 'https://bibster3.github.io/CalorieMate/',
       iframeUrl: 'https://bibster3.github.io/CalorieMate/',
       githubUrl: 'https://github.com/Bibster3/CalorieMate',
-      technologies: ['HTML', 'CSS', 'JavaScript'],
+      technologies: [
+        'React',
+        'TypeScript',
+        'Tailwind CSS',
+        'HTML',
+        'CSS',
+        'JavaScript',
+        'Supabase',
+        'GitHub',
+        'Photoshop',
+      ],
     },
     {
       title: 'WeatherApp',
@@ -31,7 +50,17 @@ const Portfolio = () => {
       websiteUrl: 'https://bibster3.github.io/WeatherApp/',
       iframeUrl: 'https://bibster3.github.io/WeatherApp/',
       githubUrl: 'https://github.com/Bibster3/WeatherApp',
-      technologies: ['React', 'TypeScript', 'Tailwind CSS'],
+      technologies: [
+        'React',
+        'TypeScript',
+        'Tailwind CSS',
+        'HTML',
+        'CSS',
+        'JavaScript',
+        'Supabase',
+        'GitHub',
+        'Photoshop',
+      ],
     },
     {
       title: 'Candy Forest',
@@ -40,7 +69,7 @@ const Portfolio = () => {
       websiteUrl: 'https://bilyanas.itch.io/candy-forest',
       githubUrl: 'https://gitfront.io/r/Bibster/YAVvvmx6zVqW/CForest-SO/',
       imageUrl: candyForestImage,
-      technologies: ['Unity', 'CSharp'],
+      technologies: ['Unity', 'CSharp', 'WebGL', 'GitHub', 'Photoshop'],
     },
     {
       title: 'Dutch Shuffleboard',
@@ -50,7 +79,14 @@ const Portfolio = () => {
       githubUrl:
         'https://gitfront.io/r/Bibster/iag86sqqZCam/Dutch-Shuffleboard/',
       imageUrl: dutchShuffleboardImage,
-      technologies: ['Unity', 'CSharp'],
+      technologies: [
+        'Unity',
+        'CSharp',
+        'WebGL',
+        'GitHub',
+        'Photoshop',
+        '3DSMax',
+      ],
     },
     {
       title: 'Friendscape',
@@ -59,12 +95,13 @@ const Portfolio = () => {
       websiteUrl: 'https://bilyanas.itch.io/friendscape',
       githubUrl: 'https://gitfront.io/r/Bibster/i8YyuMAT465Z/Friendscape/',
       imageUrl: friendscapeImage,
-      technologies: ['Unity', 'CSharp'],
+      technologies: ['Unity', 'CSharp', 'WebGL', 'GitHub', 'Photoshop'],
     },
   ]
 
   const [visibleProjects, setVisibleProjects] = useState([])
   const projectRefs = useRef([])
+  const [selectedImage, setSelectedImage] = useState(null)
 
   // IntersectionObserver callback function to check if the project is in view
   const onIntersection = (entries) => {
@@ -95,6 +132,11 @@ const Portfolio = () => {
 
   return (
     <section id="portfolio">
+      <ImageModal
+        imageUrl={selectedImage}
+        onClose={() => setSelectedImage(null)}
+      />
+
       <div className="portfolio max-w-6xl mx-auto px-4 py-8">
         <h2 className="text-4xl font-bold text-center mb-12 text-white">
           My Creative <span className="text-pink-400">Portfolio</span>
@@ -117,6 +159,7 @@ const Portfolio = () => {
                   websiteUrl={project.websiteUrl}
                   githubUrl={project.githubUrl}
                   technologies={project.technologies}
+                  onImageClick={setSelectedImage}
                 />
               )}
             </div>
