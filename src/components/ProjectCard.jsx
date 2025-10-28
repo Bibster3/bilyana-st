@@ -2,7 +2,7 @@ import React from 'react';
 
 const ProjectCard = ({ title, description, iframeUrl, githubUrl }) => {
     return (
-        <div className="project-card max-w-4xl mx-auto bg-gray-900 rounded-xl shadow-lg p-6 mb-10">
+        <div className="project-card  bg-gray-900 rounded-xl shadow-lg p-6 mb-10">
             <h2 className="text-2xl font-semibold text-pink-400 mb-2">{title}</h2>
             <p className="text-gray-300 mb-4">{description}</p>
             <div className="project-iframe w-full aspect-video mb-4">

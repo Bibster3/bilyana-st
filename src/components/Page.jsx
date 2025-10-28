@@ -3,11 +3,10 @@ import AboutMe from './AboutMe.tsx'
 import Footer from './ui/Footer.tsx'
 import NavLinks from './ui/NavLinks.jsx'
 import AnimatedLogo from './ui/AnimatedLogo.jsx'
-import Divider from './ui/Divider.tsx'
 
-const Portfolio = lazy(() => import('./Portfolio'))
-const Contact = lazy(() => import('./Contact'))
-const Spotlight = lazy(() => import('./ui/Spotlight'))
+const Portfolio = lazy(() => import('./Portfolio.jsx'))
+const Contact = lazy(() => import('./Contact.tsx'))
+const Spotlight = lazy(() => import('./ui/Spotlight.tsx'))
 
 const items = [
   {
@@ -70,15 +69,16 @@ const Page = () => {
         </div>
 
         {/* About Section */}
-        <section id="about">
-          <div>
+        <section id="about" className="py-20">
+          <div className="max-w-6xl mx-auto px-4">
             <AboutMe />
           </div>
         </section>
-        <Divider />
 
         {/* Portfolio Section */}
-        <section id="portfolio" ref={portfolioRef}>
+        <section id="portfolio" className="py-20" ref={portfolioRef}>
+         <div className="max-w-6xl mx-auto px-4">
+
           <Suspense
             fallback={
               <div className="min-h-[500px] text-center py-12">
@@ -89,16 +89,17 @@ const Page = () => {
             {showPortfolio ? (
               <>
                 <Portfolio items={items} />
-                <Divider />
               </>
             ) : (
               <div style={{ height: '500px' }} aria-hidden="true" />
             )}
           </Suspense>
+          </div>
         </section>
 
         {/* Contact Section */}
-        <section id="contact" ref={contactRef}>
+        <section id="contact" className="py-20" ref={contactRef}>
+          <div className="max-w-6xl mx-auto px-4">
           <Suspense
             fallback={
               <div className="min-h-[400px] text-center py-12">
@@ -112,6 +113,7 @@ const Page = () => {
               <div style={{ height: '400px' }} aria-hidden="true" />
             )}
           </Suspense>
+          </div>
         </section>
       </main>
 

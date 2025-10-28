@@ -49,7 +49,6 @@ if (!serviceId || !templateId || !publicKey) {
 
   return (
     <section id="contact" className="bg-gray-900 text-white py-16 px-4">
-      <div className="max-w-2xl mx-auto">
         <h2 className="text-3xl font-bold text-pink-400 mb-8 text-center">Contact Me</h2>
         <form onSubmit={handleSubmit} className="space-y-6">
           <input
@@ -96,7 +95,7 @@ if (!serviceId || !templateId || !publicKey) {
           </button>
           {status && <p className="mt-2 text-center text-pink-300">{status}</p>}
         </form>
-      </div>
+      
     </section>
   );
 };
