@@ -2,6 +2,9 @@ import React, { useRef, useEffect, useState } from 'react'
 
 import ProjectCard from './ProjectCard'
 import crayonStoryImage from '../assets/your-crayon-story.png'
+import candyForestImage from '../assets/candy-forest.png'
+import dutchShuffleboardImage from '../assets/dutch-shuffleboard.png'
+import friendscapeImage from '../assets/friendscape.png'
 
 const Portfolio = () => {
   const projects = [
@@ -10,6 +13,7 @@ const Portfolio = () => {
       description:
         'Your Crayon Story is an interactive web app where children can create and personalize their own coloring books. Built with React, TypeScript, Tailwind CSS, and Supabase, it combines storytelling, creativity, and technology to turn imagination into printable art.',
       imageUrl: crayonStoryImage,
+      technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Supabase'],
     },
     {
       title: 'CalorieMate',
@@ -18,14 +22,44 @@ const Portfolio = () => {
       websiteUrl: 'https://bibster3.github.io/CalorieMate/',
       iframeUrl: 'https://bibster3.github.io/CalorieMate/',
       githubUrl: 'https://github.com/Bibster3/CalorieMate',
+      technologies: ['HTML', 'CSS', 'JavaScript'],
     },
     {
       title: 'WeatherApp',
       description:
-        'Weatherly is a modern web application designed to keep you informed about the weather conditions in your area and beyond. Built with React, TypeScript, and Tailwind CSS, Weatherly offers a seamless user experience with real-time updates and intuitive navigation.',
+        'WeatherApp is a modern web application designed to keep you informed about the weather conditions in your area and beyond.',
       websiteUrl: 'https://bibster3.github.io/WeatherApp/',
       iframeUrl: 'https://bibster3.github.io/WeatherApp/',
       githubUrl: 'https://github.com/Bibster3/WeatherApp',
+      technologies: ['React', 'TypeScript', 'Tailwind CSS'],
+    },
+    {
+      title: 'Candy Forest',
+      description:
+        'A whimsical 2D platformer where a charming unicorn journeys through an enchanting candy filled forest.',
+      websiteUrl: 'https://bilyanas.itch.io/candy-forest',
+      githubUrl: 'https://gitfront.io/r/Bibster/YAVvvmx6zVqW/CForest-SO/',
+      imageUrl: candyForestImage,
+      technologies: ['Unity', 'CSharp'],
+    },
+    {
+      title: 'Dutch Shuffleboard',
+      description:
+        'A whimsical 2D platformer where a charming unicorn journeys through an enchanting candy filled forest.',
+      websiteUrl: 'https://bilyanas.itch.io/dutch-shuffleboard-2',
+      githubUrl:
+        'https://gitfront.io/r/Bibster/iag86sqqZCam/Dutch-Shuffleboard/',
+      imageUrl: dutchShuffleboardImage,
+      technologies: ['Unity', 'CSharp'],
+    },
+    {
+      title: 'Friendscape',
+      description:
+        'A whimsical 2D platformer where a charming unicorn journeys through an enchanting candy filled forest.',
+      websiteUrl: 'https://bilyanas.itch.io/friendscape',
+      githubUrl: 'https://gitfront.io/r/Bibster/i8YyuMAT465Z/Friendscape/',
+      imageUrl: friendscapeImage,
+      technologies: ['Unity', 'CSharp'],
     },
   ]
 
@@ -61,8 +95,12 @@ const Portfolio = () => {
 
   return (
     <section id="portfolio">
-      <div className="portfolio">
-        <div className="project-list">
+      <div className="portfolio max-w-6xl mx-auto px-4 py-8">
+        <h2 className="text-4xl font-bold text-center mb-12 text-white">
+          My Creative <span className="text-pink-400">Portfolio</span>
+        </h2>
+
+        <div className="project-list grid grid-cols-1 md:grid-cols-2 gap-8">
           {projects.map((project, index) => (
             <div
               key={index}
@@ -78,6 +116,7 @@ const Portfolio = () => {
                   imageUrl={project.imageUrl}
                   websiteUrl={project.websiteUrl}
                   githubUrl={project.githubUrl}
+                  technologies={project.technologies}
                 />
               )}
             </div>
