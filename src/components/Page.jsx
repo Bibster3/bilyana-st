@@ -16,32 +16,30 @@ const Page = () => {
 
   // Portfolio observer
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setShowPortfolio(true)
-          observer.disconnect()
-        }
-      },
-      { rootMargin: '300px', threshold: 0.1 }
-    )
-    if (portfolioRef.current) observer.observe(portfolioRef.current)
-    return () => observer.disconnect()
-  }, [])
+    const createObserver = (ref, setState) => {
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setState(true)
+            observer.disconnect()
+          }
+        },
+        { rootMargin: '300px', threshold: 0.1 }
+      )
 
-  // Contact observer
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setShowContact(true)
-          observer.disconnect()
-        }
-      },
-      { rootMargin: '300px', threshold: 0.1 }
-    )
-    if (contactRef.current) observer.observe(contactRef.current)
-    return () => observer.disconnect()
+      if (ref.current) {
+        observer.observe(ref.current)
+      }
+      return observer
+    }
+
+    const portfolioObserver = createObserver(portfolioRef, setShowPortfolio)
+    const contactObserver = createObserver(contactRef, setShowContact)
+
+    return () => {
+      portfolioObserver.disconnect()
+      contactObserver.disconnect()
+    }
   }, [])
 
   return (
