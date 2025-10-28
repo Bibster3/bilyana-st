@@ -11,6 +11,13 @@ import { FaGithub } from "@react-icons/all-files/fa/FaGithub";
 import { SiAdobephotoshop } from "@react-icons/all-files/si/SiAdobephotoshop";
 import { SiUnity } from "@react-icons/all-files/si/SiUnity";
 
+const SkillTag = ({ icon, label }: { icon: React.ReactNode; label: string }) => (
+  <div className="flex items-center gap-2 bg-pink-500 text-white px-4 py-2 rounded-full text-sm font-medium shadow-md whitespace-nowrap">
+    {icon}
+    <span>{label}</span>
+  </div>
+);
+
 export default function AboutMe() {
   return (
   <LazyMotion features={domAnimation}>
@@ -22,9 +29,9 @@ export default function AboutMe() {
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="max-w-5xl text-center sm:text-left px-4"
+        className="max-w-5xl text-center px-4"
       >
-        <h2 className="text-4xl font-bold mb-6 text-pink-400">Hi! I'm Bilyana</h2>
+        <h2 className="text-4xl font-bold text-center mb-12 text-white">About <span className="text-pink-400">Me</span></h2>
                <p className="text-lg leading-relaxed text-gray-300">
           I’m an aspiring{" "}
           <span className="text-pink-400 font-semibold">Front-End Developer</span> passionate about building
@@ -42,46 +49,19 @@ export default function AboutMe() {
         <p className="text-lg leading-relaxed text-gray-300 mt-4">
           Currently, I am focusing intensively on front-end development, striving to create impactful and visually appealing interfaces that enhance user interaction and satisfaction.
         </p>
-        <p className="font-semibold text-center">Let's collaborate on your next venture!</p>
+        <p className="font-semibold text-center mt-8">Let's collaborate on your next venture!</p>
          
          {/* Skill Tags */}
-       <div className="flex flex-wrap justify-center gap-10 mt-10 pt-10">
-      <div className="flex items-center gap-2 text-pink-400">
-        <FaHtml5 size={30} />
-        <span>HTML</span>
-      </div>
-      <div className="flex items-center gap-2 text-pink-400">
-        <FaCss3Alt size={30} />
-        <span>CSS</span>
-      </div>
-      <div className="flex items-center gap-2 text-pink-400">
-        <FaJsSquare size={30} />
-        <span>JavaScript</span>
-      </div>
-      <div className="flex items-center gap-2 text-pink-400">
-        <FaReact size={30} />
-        <span>React</span>
-      </div>
-      <div className="flex items-center gap-2 text-pink-400">
-        <SiTypescript size={30} />
-        <span>TypeScript</span>
-      </div>
-          <div className="flex items-center gap-2 text-pink-400">
-        <SiTailwindcss size={30} />
-        <span>TailwindCSS</span>
-      </div>
-      <div className="flex items-center gap-2 text-pink-400">
-        <FaGithub size={30} />
-        <span>GitHub</span>
-      </div>
-       <div className="flex items-center gap-2 text-pink-400">
-        <SiAdobephotoshop size={30} />
-        <span>Photoshop</span>
-      </div>
-      <div className="flex items-center gap-2 text-pink-400">
-        <SiUnity size={30} />
-        <span>Unity</span>
-      </div>
+       <div className="flex flex-wrap justify-center gap-3 mt-10 pt-10">
+          <SkillTag icon={<FaHtml5 />} label="HTML" />
+          <SkillTag icon={<FaCss3Alt />} label="CSS" />
+          <SkillTag icon={<FaJsSquare />} label="JavaScript" />
+          <SkillTag icon={<FaReact />} label="React" />
+          <SkillTag icon={<SiTypescript />} label="TypeScript" />
+          <SkillTag icon={<SiTailwindcss />} label="Tailwind CSS" />
+          <SkillTag icon={<FaGithub />} label="GitHub" />
+          <SkillTag icon={<SiAdobephotoshop />} label="Photoshop" />
+          <SkillTag icon={<SiUnity />} label="Unity" />
     </div>
          <div className="flex justify-center mt-10 pt-10 pb-20">
           <ResumeDownloadButton />
@@ -92,4 +72,3 @@ export default function AboutMe() {
 
   );
 }
-

@@ -10,6 +10,7 @@ const Contact: React.FC = () => {
   });
 
   const [status, setStatus] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const isEmailValid = (email: string) =>
     /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -25,31 +26,40 @@ const Contact: React.FC = () => {
       setStatus("Please enter a valid email address.");
       return;
     }
-  const serviceId = "service_t0kzt2w";
-const templateId = "template_jn5md0l";
-const publicKey = "mFP23VlY-qjDoxFr1";
 
-if (!serviceId || !templateId || !publicKey) {
-  throw new Error("Missing EmailJS environment variables.");
-}
-
+    setIsLoading(true);
+    setStatus("Sending...");
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+    
+    if (!serviceId || !templateId || !publicKey) {
+      console.error("Missing EmailJS environment variables.");
+      setStatus("❌ Configuration error. Please contact support.");
+      setIsLoading(false);
+      return;
+    }
+    
     emailjs.send(serviceId, templateId, formData, publicKey)
   .then(
     (res: any) => {
       console.log("✅ Email sent:", res);
       setStatus("✅ Message sent successfully!");
-      setFormData({ name: "", email: "", title: "", message: "" })
+      // Clear the form by resetting the state
+      setFormData({ name: "", email: "", title: "", message: "" });
     },
     (err: any) => {
       console.error("❌ EmailJS error:", err);
       setStatus("❌ Failed to send message. Please try again.");
-    }
-  );
+    })
+    .finally(() => {
+      setIsLoading(false);
+    });
   };
 
   return (
     <section id="contact" className="bg-gray-900 text-white py-16 px-4">
-        <h2 className="text-3xl font-bold text-pink-400 mb-8 text-center">Contact Me</h2>
+        <h2 className="text-4xl font-bold text-center mb-12 text-white">Get In <span className="text-pink-400">Touch</span></h2>
         <form onSubmit={handleSubmit} className="space-y-6">
           <input
             type="text"
@@ -89,9 +99,10 @@ if (!serviceId || !templateId || !publicKey) {
           />
           <button
             type="submit"
-            className="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-6 rounded"
+            disabled={isLoading}
+            className="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-6 rounded disabled:bg-gray-600 disabled:cursor-not-allowed"
           >
-            Send Message
+            {isLoading ? "Sending..." : "Send Message"}
           </button>
           {status && <p className="mt-2 text-center text-pink-300">{status}</p>}
         </form>
