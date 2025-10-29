@@ -1,7 +1,7 @@
 import React, { lazy, Suspense, useState, useEffect, useRef } from 'react'
 import AboutMe from './AboutMe.tsx'
 import Footer from './ui/Footer.tsx'
-import NavLinks from './ui/NavLinks.jsx'
+import NavLinks from './ui/Navlinks.jsx'
 import AnimatedLogo from './ui/AnimatedLogo.jsx'
 
 const Portfolio = lazy(() => import('./Portfolio.jsx'))
@@ -43,7 +43,7 @@ const Page = () => {
   }, [])
 
   return (
-    <>
+    <div className="min-h-screen bg-gray-900 text-white justify-center flex-col overflow-hidden mx-auto sm:px-10 px-5">
       <main>
         <Suspense
           fallback={<div className="min-h-[200px]" aria-hidden="true" />}
@@ -54,12 +54,12 @@ const Page = () => {
           <NavLinks />
         </div>
 
-        <div className="hidden sm:flex relative justify-center items-center mt-10 sm:mt-16">
+        <div className="hidden sm:flex relative justify-center items-center mt-1000 sm:mt-16">
           <AnimatedLogo />
         </div>
 
         {/* About Section */}
-        <section id="about" className="py-20">
+        <section id="about" className="pt-62 pb-20">
           <div className="max-w-6xl mx-auto px-4">
             <AboutMe />
           </div>
@@ -107,7 +107,7 @@ const Page = () => {
       </main>
 
       <Footer />
-    </>
+    </div>
   )
 }
 

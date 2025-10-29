@@ -1,11 +1,10 @@
 import React from "react";
+import resumeFile from "../assets/Bilyana_Stefanova_Resume.pdf";
 
 const ResumeDownloadButton = () => {
   const downloadResume = () => {
-    // Replace with the path to your resume PDF file
-    const resumePath = "https://drive.google.com/file/d/1EYgkGm-3bhgtDXKY9mu2TSeQ0KNYZmd9/view?usp=sharing";
     const link = document.createElement("a");
-    link.href = resumePath;
+    link.href = resumeFile;
     link.setAttribute("download", "Bilyana_Stefanova_Resume.pdf");
     document.body.appendChild(link);
     link.click();
