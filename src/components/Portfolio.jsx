@@ -5,10 +5,21 @@ import crayonStoryImage from '../assets/your-crayon-story.png'
 import candyForestImage from '../assets/candy-forest.png'
 import dutchShuffleboardImage from '../assets/dutch-shuffleboard.png'
 import friendscapeImage from '../assets/friendscape.png'
+import bestShopImage from '../assets/best-shop.png'
+
 import ImageModal from './ImageModal'
 
 const Portfolio = () => {
   const projects = [
+    {
+      title: 'Best Shop',
+      description:
+        'A Vanilla JavaScript e-commerce site featuring dynamic filtering, LocalStorage cart management, and a fully responsive layout. Built to strict professional Figma-to-code standards as an EPAM Campus capstone.',
+      imageUrl: bestShopImage,
+      websiteUrl: 'https://bibster3.github.io/best-shop/',
+      githubUrl: 'https://github.com/Bibster3/best-shop',
+      technologies: ['JavaScript', 'SASS', 'HTML', 'GitHub'],
+    },
     {
       title: 'Your Crayon Story (in progress)',
       description:
