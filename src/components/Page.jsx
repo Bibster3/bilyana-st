@@ -3,6 +3,7 @@ import AboutMe from './AboutMe.tsx'
 import Footer from './ui/Footer.tsx'
 import NavLinks from './ui/Navlinks.jsx'
 import AnimatedLogo from './ui/AnimatedLogo.jsx'
+import ResumeDownloadButton from './ResumeDownloadButton.tsx'
 
 const Portfolio = lazy(() => import('./Portfolio.jsx'))
 const Contact = lazy(() => import('./Contact.tsx'))
@@ -54,19 +55,31 @@ const Page = () => {
           <NavLinks />
         </div>
 
-        <div className="hidden sm:flex relative justify-center items-center mt-1000 sm:mt-16">
-          <AnimatedLogo />
-        </div>
-
         {/* About Section */}
-        <section id="about" className="pt-62 pb-20">
-          <div className="max-w-6xl mx-auto px-4">
-            <AboutMe />
+        <section id="about" className="pt-0 pb-20">
+          {' '}
+          {/* Reduced pt-62 to pt-32 for better spacing */}
+          <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center gap-12">
+            {/* Text Content */}
+            <div className="flex-1">
+              <AboutMe />
+            </div>
+
+            {/* Animated Logo on the Right */}
+            <div className="hidden sm:flex shrink-0 flex-col items-center justify-center gap-6">
+              <div className="flex flex-col items-center">
+                <AnimatedLogo />
+              </div>
+
+              <div className="mt-4">
+                <ResumeDownloadButton />
+              </div>
+            </div>
           </div>
         </section>
 
         {/* Portfolio Section */}
-        <section id="portfolio" className="py-20" ref={portfolioRef}>
+        <section id="portfolio" className="py-5" ref={portfolioRef}>
           <div className="max-w-6xl mx-auto px-4">
             <Suspense
               fallback={

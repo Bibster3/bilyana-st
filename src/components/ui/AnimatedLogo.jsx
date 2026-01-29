@@ -3,10 +3,11 @@ import profileImage from '../../public/profile.webp'
 
 export default function AnimatedLogo() {
   return (
-    <div className="relative w-64 h- flex items-center justify-center text-white">
+    <div className="relative w-64 h-64 flex items-center justify-center">
+      
+      {/* The Animated Ring */}
       <svg
-        className="animate-spin-slow"
-        xmlns="http://www.w3.org/2000/svg"
+        className="animate-spin-slow w-full h-full"
         viewBox="0 0 100 100"
         fill="none"
         stroke="currentColor"
@@ -19,11 +20,11 @@ export default function AnimatedLogo() {
         />
       </svg>
 
-      {/* Centered Profile Image */}
       <img
         src={profileImage}
         alt="Bilyana Stefanova"
-        className="absolute top-1/2 left-1/2 w-48 h-48 rounded-full object-cover transform -translate-x-1/2 -translate-y-1/2"
+    
+        className="absolute w-48 h-48 rounded-full object-cover border-4 border-transparent"
       />
 
       <style>{`

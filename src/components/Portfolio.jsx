@@ -148,9 +148,9 @@ const Portfolio = () => {
         onClose={() => setSelectedImage(null)}
       />
 
-      <div className="portfolio max-w-6xl mx-auto px-4 py-8">
+      <div className="portfolio max-w-6xl mx-auto px-4">
         <h2 className="text-4xl font-bold text-center mb-12 text-white">
-          My Creative <span className="text-pink-400">Portfolio</span>
+          My  <span className="text-pink-400">Portfolio</span>
         </h2>
 
         <div className="project-list grid grid-cols-1 md:grid-cols-2 gap-8">
