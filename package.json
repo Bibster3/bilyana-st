@@ -15,14 +15,11 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "tw:init": "npx @tailwindcss/cli init -p",
     "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d dist"
   },
   "eslintConfig": {
     "extends": [
@@ -46,6 +43,7 @@
     "@tailwindcss/cli": "^4.1.5",
     "@tailwindcss/postcss": "^4.1.8",
     "@types/react": "^19.1.4",
+    "@vitejs/plugin-react": "^4.7.0",
     "autoprefixer": "^10.4.21",
     "gh-pages": "^6.3.0",
     "mini-svg-data-uri": "^1.4.4",
