@@ -1,5 +1,5 @@
 import React from 'react'
-import './App.css'
+import './index.css'
 import Page from './components/Page.jsx'
 
 function App() {

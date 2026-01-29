@@ -7,7 +7,6 @@ import ResumeDownloadButton from './ResumeDownloadButton.tsx'
 
 const Portfolio = lazy(() => import('./Portfolio.jsx'))
 const Contact = lazy(() => import('./Contact.tsx'))
-const Spotlight = lazy(() => import('./ui/Spotlight.tsx'))
 
 const Page = () => {
   const [showPortfolio, setShowPortfolio] = useState(false)
@@ -49,7 +48,6 @@ const Page = () => {
         <Suspense
           fallback={<div className="min-h-[200px]" aria-hidden="true" />}
         >
-          <Spotlight />
         </Suspense>
         <div className="relative z-50">
           <NavLinks />
