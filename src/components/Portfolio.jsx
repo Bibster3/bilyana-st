@@ -85,7 +85,7 @@ const Portfolio = () => {
     {
       title: 'Dutch Shuffleboard',
       description:
-        'A whimsical 2D platformer where a charming unicorn journeys through an enchanting candy filled forest.',
+        'A variation of table shuffleboard. The ultimate goal is to slide discs through small slots on the other side of the table.',
       websiteUrl: 'https://bilyanas.itch.io/dutch-shuffleboard-2',
       githubUrl:
         'https://gitfront.io/r/Bibster/iag86sqqZCam/Dutch-Shuffleboard/',
@@ -102,7 +102,7 @@ const Portfolio = () => {
     {
       title: 'Friendscape',
       description:
-        'A whimsical 2D platformer where a charming unicorn journeys through an enchanting candy filled forest.',
+        'A puzzle game where the goal is to move three friends through a cluttered room to reach the exit door on the other side. ',
       websiteUrl: 'https://bilyanas.itch.io/friendscape',
       githubUrl: 'https://gitfront.io/r/Bibster/i8YyuMAT465Z/Friendscape/',
       imageUrl: friendscapeImage,
