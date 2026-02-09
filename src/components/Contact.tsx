@@ -32,11 +32,11 @@ const Contact: React.FC = () => {
     setIsLoading(true)
     setStatus('Sending...')
 
-    // These will now be recognized thanks to the vite/client types
     const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID
     const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
 
-    if (!serviceId || !templateId) {
+    if (!serviceId || !templateId || !publicKey) {
       console.error('Missing EmailJS environment variables.')
       setStatus('❌ Configuration error. Please contact support.')
       setIsLoading(false)
@@ -44,13 +44,13 @@ const Contact: React.FC = () => {
     }
 
     emailjs
-      .send(serviceId, templateId, formData)
+      .send(serviceId, templateId, formData, publicKey)
       .then(
         () => {
           setStatus('✅ Message sent successfully!')
           setFormData({ name: '', email: '', title: '', message: '' })
         },
-        (err) => {
+        (err: any) => {
           console.error('❌ EmailJS error:', err)
           setStatus('❌ Failed to send message. Please try again.')
         }
