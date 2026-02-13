@@ -5,7 +5,7 @@ import crayonStoryImage from '../assets/your-crayon-story.png'
 import candyForestImage from '../assets/candy-forest.png'
 import dutchShuffleboardImage from '../assets/dutch-shuffleboard.png'
 import friendscapeImage from '../assets/friendscape.png'
-import bestShopImage from '../assets/best-shop.png'
+import bestShopImage from '../assets/best-shop.PNG'
 
 import ImageModal from './ImageModal'
 
