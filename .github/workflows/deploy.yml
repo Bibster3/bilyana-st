@@ -25,6 +25,9 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Validate entrypoint consistency
+        run: npm run check:entrypoint
+
       - name: Build
         run: npm run build
 
