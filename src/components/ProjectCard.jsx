@@ -52,6 +52,7 @@ const ProjectCard = ({
             <iframe
               src={iframeUrl}
               title={title}
+              loading="lazy"
               className="w-full h-full border-2 border-gray-700 rounded-md"
               allowFullScreen
             />
@@ -65,6 +66,8 @@ const ProjectCard = ({
             <img
               src={imageUrl}
               alt={title}
+              loading="lazy"
+              decoding="async"
               className="w-full h-full object-cover border-2 border-gray-700 rounded-md"
             />
           </button>

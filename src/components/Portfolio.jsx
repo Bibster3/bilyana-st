@@ -1,11 +1,11 @@
 import React, { useRef, useEffect, useState } from 'react'
 
 import ProjectCard from './ProjectCard'
-import crayonStoryImage from '../assets/your-crayon-story.png'
-import candyForestImage from '../assets/candy-forest.png'
-import dutchShuffleboardImage from '../assets/dutch-shuffleboard.png'
-import friendscapeImage from '../assets/friendscape.png'
-import bestShopImage from '../assets/best-shop.PNG'
+import crayonStoryImage from '../assets/your-crayon-story.webp'
+import candyForestImage from '../assets/candy-forest.webp'
+import dutchShuffleboardImage from '../assets/dutch-shuffleboard.webp'
+import friendscapeImage from '../assets/friendscape.webp'
+import bestShopImage from '../assets/best-shop.webp'
 
 import ImageModal from './ImageModal'
 
