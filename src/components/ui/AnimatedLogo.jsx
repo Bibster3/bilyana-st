@@ -23,7 +23,7 @@ export default function AnimatedLogo() {
       <img
         src={profileImage}
         alt="Bilyana Stefanova"
-    
+        fetchpriority="high"
         className="absolute w-48 h-48 rounded-full object-cover border-4 border-transparent"
       />
 
