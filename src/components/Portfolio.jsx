@@ -11,20 +11,13 @@ import ImageModal from './ImageModal'
 
 const Portfolio = () => {
   const projects = [
+
     {
-      title: 'Best Shop',
+      title: 'Your Crayon Story',
       description:
-        'A Vanilla JavaScript e-commerce site featuring dynamic filtering, LocalStorage cart management, and a fully responsive layout. Built to strict professional Figma-to-code standards as an EPAM Campus capstone.',
-      imageUrl: bestShopImage,
-      websiteUrl: 'https://bibster3.github.io/best-shop/',
-      githubUrl: 'https://github.com/Bibster3/best-shop',
-      technologies: ['JavaScript', 'SASS', 'HTML', 'GitHub'],
-    },
-    {
-      title: 'Your Crayon Story (in progress)',
-      description:
-        'Your Crayon Story is an interactive web app where children can create and personalize their own coloring books. Built with React, TypeScript, Tailwind CSS, and Supabase, it combines storytelling, creativity, and technology to turn imagination into printable art.',
+        'An early-stage digital product concept focused on personalization, storytelling, and a simple, engaging user journey for families.',
       imageUrl: crayonStoryImage,
+      websiteUrl: 'https://www.yourcrayonstory.com/',
       technologies: [
         'React',
         'TypeScript',
@@ -35,10 +28,19 @@ const Portfolio = () => {
         'Photoshop',
       ],
     },
+        {
+      title: 'Best Shop',
+      description:
+        'A responsive e-commerce experience shaped around clear user flows, conversion-focused UX, and polished interaction design.',
+      imageUrl: bestShopImage,
+      websiteUrl: 'https://bibster3.github.io/best-shop/',
+      githubUrl: 'https://github.com/Bibster3/best-shop',
+      technologies: ['JavaScript', 'SASS', 'HTML', 'GitHub'],
+    },
     {
       title: 'CalorieMate',
       description:
-        'CalorieMate is a responsive web application designed for tracking nutritional intake. It features a user-friendly interface built with HTML, CSS, and JavaScript, ensuring seamless navigation and interactive functionality. Hosted on GitHub Pages, it showcases skills in frontend development, responsive design, and UI/UX principles, making it easy to monitor and manage daily calorie consumption effectively.',
+        'A nutrition-tracking experience designed around usability, clear feedback, and everyday user habits in a modern web app.',
       websiteUrl: 'https://bibster3.github.io/CalorieMate/',
       iframeUrl: 'https://bibster3.github.io/CalorieMate/',
       githubUrl: 'https://github.com/Bibster3/CalorieMate',
@@ -57,7 +59,7 @@ const Portfolio = () => {
     {
       title: 'WeatherApp',
       description:
-        'WeatherApp is a modern web application designed to keep you informed about the weather conditions in your area and beyond.',
+        'A practical product experience focused on delivering timely information in a clear, user-friendly interface.',
       websiteUrl: 'https://bibster3.github.io/WeatherApp/',
       iframeUrl: 'https://bibster3.github.io/WeatherApp/',
       githubUrl: 'https://github.com/Bibster3/WeatherApp',
@@ -76,7 +78,7 @@ const Portfolio = () => {
     {
       title: 'Candy Forest',
       description:
-        'A whimsical 2D platformer where a charming unicorn journeys through an enchanting candy filled forest.',
+        'A game experience built with a strong emphasis on engagement, visual clarity, and enjoyable interaction design.',
       websiteUrl: 'https://bilyanas.itch.io/candy-forest',
       githubUrl: 'https://gitfront.io/r/Bibster/YAVvvmx6zVqW/CForest-SO/',
       imageUrl: candyForestImage,
@@ -85,7 +87,7 @@ const Portfolio = () => {
     {
       title: 'Dutch Shuffleboard',
       description:
-        'A variation of table shuffleboard. The ultimate goal is to slide discs through small slots on the other side of the table.',
+        'A playful product experience with clearly structured game logic, smooth interaction, and a strong sense of flow.',
       websiteUrl: 'https://bilyanas.itch.io/dutch-shuffleboard-2',
       githubUrl:
         'https://gitfront.io/r/Bibster/iag86sqqZCam/Dutch-Shuffleboard/',
@@ -102,7 +104,7 @@ const Portfolio = () => {
     {
       title: 'Friendscape',
       description:
-        'A puzzle game where the goal is to move three friends through a cluttered room to reach the exit door on the other side. ',
+        'A puzzle experience designed to balance challenge, usability, and memorable interaction for players.',
       websiteUrl: 'https://bilyanas.itch.io/friendscape',
       githubUrl: 'https://gitfront.io/r/Bibster/i8YyuMAT465Z/Friendscape/',
       imageUrl: friendscapeImage,
@@ -114,7 +116,6 @@ const Portfolio = () => {
   const projectRefs = useRef([])
   const [selectedImage, setSelectedImage] = useState(null)
 
-  // IntersectionObserver callback function to check if the project is in view
   const onIntersection = (entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
@@ -131,7 +132,7 @@ const Portfolio = () => {
     const observer = new IntersectionObserver(onIntersection, {
       root: null,
       rootMargin: '0px',
-      threshold: 0.1, // Adjust as needed based on your layout and visibility needs
+      threshold: 0.1,
     })
 
     projectRefs.current.forEach((ref) => {
@@ -149,9 +150,14 @@ const Portfolio = () => {
       />
 
       <div className="portfolio max-w-6xl mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center mb-12 text-white">
-          My  <span className="text-pink-400">Portfolio</span>
+        <h2 className="text-4xl font-bold text-center mb-6 text-white">
+          Selected <span className="text-pink-400">Product & UX Work</span>
         </h2>
+        <p className="text-center text-gray-300 max-w-3xl mx-auto mb-12">
+          These projects highlight my approach to building thoughtful digital
+          experiences, supporting product delivery, and balancing user needs
+          with practical execution.
+        </p>
 
         <div className="project-list grid grid-cols-1 md:grid-cols-2 gap-8">
           {projects.map((project, index) => (

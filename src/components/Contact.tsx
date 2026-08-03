@@ -62,9 +62,13 @@ const Contact: React.FC = () => {
 
   return (
     <section id="contact" className="bg-gray-900 text-white py-16 px-4">
-      <h2 className="text-4xl font-bold text-center mb-12 text-white">
-        Get In <span className="text-pink-400">Touch</span>
+      <h2 className="text-4xl font-bold text-center mb-4 text-white">
+        Let’s talk <span className="text-pink-400">product</span>
       </h2>
+      <p className="text-center text-gray-300 max-w-2xl mx-auto mb-8">
+        I’m interested in opportunities where I can contribute to product
+        strategy, roadmap planning, and delivery with a strong user focus.
+      </p>
       <form onSubmit={handleSubmit} className="space-y-6">
         <input
           type="text"
@@ -87,7 +91,7 @@ const Contact: React.FC = () => {
         <input
           type="text"
           name="title"
-          placeholder="Subject"
+          placeholder="Role or Company"
           value={formData.title}
           onChange={handleChange}
           required
@@ -96,7 +100,7 @@ const Contact: React.FC = () => {
         <textarea
           name="message"
           rows={5}
-          placeholder="Your Message"
+          placeholder="Tell me about the team, product, or opportunity."
           value={formData.message}
           onChange={handleChange}
           required

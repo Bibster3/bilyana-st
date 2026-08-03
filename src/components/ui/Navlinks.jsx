@@ -15,7 +15,7 @@ export default function Navinks() {
             href="#portfolio"
             className="nav-link text-white hover:text-pink-400 transition-colors"
           >
-            Portfolio
+            Experience
           </a>
           <a
             href="#contact"

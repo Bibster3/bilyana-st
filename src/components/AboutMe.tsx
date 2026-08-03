@@ -1,17 +1,6 @@
 import React from 'react'
 import { LazyMotion, domAnimation, motion } from 'framer-motion'
 import ResumeDownloadButton from './ResumeDownloadButton'
-import { FaHtml5 } from '@react-icons/all-files/fa/FaHtml5'
-import { FaCss3Alt } from '@react-icons/all-files/fa/FaCss3Alt'
-import { FaJsSquare } from '@react-icons/all-files/fa/FaJsSquare'
-import { FaReact } from '@react-icons/all-files/fa/FaReact'
-import { SiTypescript } from '@react-icons/all-files/si/SiTypescript'
-import { FaGithub } from '@react-icons/all-files/fa/FaGithub'
-import { SiAdobephotoshop } from '@react-icons/all-files/si/SiAdobephotoshop'
-import { SiUnity } from '@react-icons/all-files/si/SiUnity'
-import { SiTailwindcss } from '@react-icons/all-files/si/SiTailwindcss'
-import { FaSass } from '@react-icons/all-files/fa/FaSass';
-import { SiCsharp } from '@react-icons/all-files/si/SiCsharp'
 
 const SkillTag = ({
   icon,
@@ -39,59 +28,77 @@ export default function AboutMe() {
           transition={{ duration: 0.8, ease: 'easeOut' }}
           className="max-w-5xl text-center px-4"
         >
-          <h2 className="text-4xl font-bold text-center mb-12 text-white">
+          <h2 className="text-4xl font-bold text-center mb-12 mt-16 text-white">
             Hi <span className="text-pink-400">there!</span>
           </h2>
           <p className="text-lg leading-relaxed text-gray-300">
-            My name is Bilyana and I’m an aspiring{' '}
+            I'm{' '}
             <span className="text-pink-400 font-semibold">
-              Front-End Developer
-            </span>{' '}
-            passionate about building responsive and user-friendly web
-            applications. With hands-on experience in{' '}
-            <span className="text-pink-400 font-semibold">
-              HTML, CSS, JavaScript, React, and TypeScript
+              Bilyana Stefanova
             </span>
-            , I recently completed the intensive Front-End Engineer career path
-            at Codecademy, strengthening my skills in modern development
-            practices.
-          </p>
-          <p className="text-lg leading-relaxed text-gray-300 mt-4">
-            My background also includes experience in{' '}
-            <span className="text-pink-400 font-semibold">
-              Unity game development
-            </span>
-            . This honed my problem-solving skills and reinforced my commitment
-            to writing clean, maintainable code.
-          </p>
-          <p className="text-lg leading-relaxed text-gray-300 mt-4">
-            In addition to my technical stack, I bring a strong soft skill set,
-            developed through roles in project coordination, social media
-            management, and client communication. I’m continuously exploring new
-            technologies and excited to contribute to{' '}
-            <span className="text-pink-400 font-semibold">
-              innovative projects
-            </span>{' '}
-            that create meaningful user experiences.
-          </p>
-          <p className="font-semibold text-center mt-8">
-            Let's chat about your team's goals!
+            , a product-oriented professional with a background in software
+            development, digital marketing, and business administration. I enjoy
+            turning ideas into digital products that solve real customer
+            problems and deliver measurable business value.
           </p>
 
-          {/* Skill Tags */}
+          <p className="text-lg leading-relaxed text-gray-300 mt-4">
+            Most recently, I created{' '}
+            <span className="text-pink-400 font-semibold">
+              Your Crayon Story
+            </span>
+            , where I took the product from concept to production by defining
+            the product vision, researching the market, designing the customer
+            journey, writing product requirements, and continuously improving
+            the platform based on user feedback.
+          </p>
+
+          <p className="text-lg leading-relaxed text-gray-300 mt-4">
+            My technical background allows me to collaborate effectively with
+            engineering teams, while my experience in marketing and
+            customer-facing roles helps me balance business goals, user needs,
+            and technical feasibility. I actively use AI-assisted workflows to
+            accelerate product discovery, documentation, and software delivery.
+          </p>
+
+          <p className="font-semibold text-center mt-8 text-pink-300">
+            Looking for Product Owner and Product Manager opportunities where I
+            can help shape product strategy and deliver customer-focused
+            solutions.
+          </p>
           <div className="flex flex-wrap justify-center gap-3 mt-10 pt-10">
-            <SkillTag icon={<FaHtml5 />} label="HTML" />
-            <SkillTag icon={<FaCss3Alt />} label="CSS" />
-            <SkillTag icon={<SiTailwindcss />} label="Tailwind CSS" />
-            <SkillTag icon={<FaSass />} label="Sass" />
-
-            <SkillTag icon={<FaJsSquare />} label="JavaScript" />
-            <SkillTag icon={<FaReact />} label="React" />
-            <SkillTag icon={<SiTypescript />} label="TypeScript" />
-            <SkillTag icon={<FaGithub />} label="GitHub" />
-            <SkillTag icon={<SiAdobephotoshop />} label="Photoshop" />
-            <SkillTag icon={<SiUnity />} label="Unity" />
-            <SkillTag icon={<SiCsharp />} label="C#" />
+            <SkillTag
+              icon={<span className="text-sm font-semibold">•</span>}
+              label="Product Strategy"
+            />
+            <SkillTag
+              icon={<span className="text-sm font-semibold">•</span>}
+              label="User Research"
+            />
+            <SkillTag
+              icon={<span className="text-sm font-semibold">•</span>}
+              label="Roadmap Planning"
+            />
+            <SkillTag
+              icon={<span className="text-sm font-semibold">•</span>}
+              label="Cross-functional Collaboration"
+            />
+            <SkillTag
+              icon={<span className="text-sm font-semibold">•</span>}
+              label="Agile Delivery"
+            />
+            <SkillTag
+              icon={<span className="text-sm font-semibold">•</span>}
+              label="React & TypeScript"
+            />
+            <SkillTag
+              icon={<span className="text-sm font-semibold">•</span>}
+              label="Jira & ClickUp"
+            />
+            <SkillTag
+              icon={<span className="text-sm font-semibold">•</span>}
+              label="UX & Design Thinking"
+            />
           </div>
         </motion.div>
       </section>
