@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://bibster3.github.io/bilyana-st/sitemap.xml
