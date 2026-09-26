@@ -29,6 +29,7 @@ const Portfolio = () => {
       },
       imageUrl: crayonStoryImage,
       websiteUrl: 'https://www.yourcrayonstory.com/',
+      imageLinkUrl: 'https://www.yourcrayonstory.com/',
       technologies: [
         'React',
         'TypeScript',
@@ -186,6 +187,7 @@ const Portfolio = () => {
           iframeUrl={project.iframeUrl}
           imageUrl={project.imageUrl}
           websiteUrl={project.websiteUrl}
+          imageLinkUrl={project.imageLinkUrl}
           githubUrl={project.githubUrl}
           technologies={project.technologies}
           onImageClick={setSelectedImage}

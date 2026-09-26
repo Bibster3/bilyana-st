@@ -17,6 +17,7 @@ const ProjectCard = ({
   caseStudy,
   iframeUrl,
   imageUrl,
+  imageLinkUrl,
   githubUrl,
   websiteUrl,
   technologies = [],
@@ -93,19 +94,37 @@ const ProjectCard = ({
             />
           </div>
         ) : imageUrl ? (
-          <button
-            className="project-image w-full aspect-video block cursor-pointer"
-            onClick={() => onImageClick(imageUrl)}
-            aria-label={`View larger image for ${title}`}
-          >
-            <img
-              src={imageUrl}
-              alt={title}
-              loading="lazy"
-              decoding="async"
-              className="w-full h-full object-cover object-top border-2 border-gray-700 rounded-md"
-            />
-          </button>
+          imageLinkUrl ? (
+            <a
+              className="project-image w-full aspect-video block cursor-pointer"
+              href={imageLinkUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Visit ${title} website`}
+            >
+              <img
+                src={imageUrl}
+                alt={title}
+                loading="lazy"
+                decoding="async"
+                className="w-full h-full object-cover object-top border-2 border-gray-700 rounded-md"
+              />
+            </a>
+          ) : (
+            <button
+              className="project-image w-full aspect-video block cursor-pointer"
+              onClick={() => onImageClick(imageUrl)}
+              aria-label={`View larger image for ${title}`}
+            >
+              <img
+                src={imageUrl}
+                alt={title}
+                loading="lazy"
+                decoding="async"
+                className="w-full h-full object-cover object-top border-2 border-gray-700 rounded-md"
+              />
+            </button>
+          )
         ) : null}
       </div>
       {technologies.length > 0 && (
@@ -117,14 +136,15 @@ const ProjectCard = ({
       )}
       <div className="flex space-x-4 mt-auto">
         {websiteUrl && (
-          <amiddle
+          <a
             href={websiteUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block bg-pink-500 hover:bg-pink-600 text-white px-6 py-2 rounded-md transition"
           >
             View Project
-          </amiddle>)}
+          </a>
+        )}
         {githubUrl && (
           <a
             href={githubUrl}
