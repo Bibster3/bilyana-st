@@ -1,4 +1,3 @@
+# https://www.robotstxt.org/robotstxt.html
 User-agent: *
-Allow: /
-
-Sitemap: https://bibster3.github.io/bilyana-st/sitemap.xml
+Disallow:
