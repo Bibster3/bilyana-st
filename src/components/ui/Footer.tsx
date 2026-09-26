@@ -17,7 +17,7 @@ export default function Footer() {
       >
         <h4 className="text-lg font-semibold text-pink-400">Bilyana Stefanova</h4>
         <p className="text-center text-gray-400">
-          Aspiring Front-End Developer | Passionate about building clean and responsive user experiences.
+          Product Owner &amp; Product Manager | Turning customer needs into valuable product outcomes.
         </p>
         <div className="flex space-x-6 text-2xl mt-4">
           <a

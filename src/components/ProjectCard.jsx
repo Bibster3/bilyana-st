@@ -14,6 +14,7 @@ import { SiWebgl } from '@react-icons/all-files/si/SiWebgl'
 const ProjectCard = ({
   title,
   description,
+  caseStudy,
   iframeUrl,
   imageUrl,
   githubUrl,
@@ -44,7 +45,41 @@ const ProjectCard = ({
     <div className="project-card bg-gray-800 rounded-xl shadow-lg p-6 flex flex-col transition-transform duration-300 hover:scale-105 hover:shadow-pink-400/20">
       <div className="flex-grow">
         <h2 className="text-2xl font-semibold text-pink-400 mb-2">{title}</h2>
-        <p className="text-gray-300 mb-4">{description}</p>
+        {caseStudy ? (
+          <div className="text-gray-300 mb-4 leading-relaxed">
+            <section className="mb-4">
+              <h3 className="text-lg font-semibold text-pink-300 mb-2">
+                The challenge
+              </h3>
+              <p>{caseStudy.challenge}</p>
+            </section>
+
+            <section className="mb-4">
+              <h3 className="text-lg font-semibold text-pink-300 mb-2">
+                My role &amp; approach
+              </h3>
+              <ul className="space-y-3">
+                {caseStudy.approach.map((item) => (
+                  <li key={item} className="flex gap-2">
+                    <span className="text-pink-400" aria-hidden="true">
+                      •
+                    </span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </section>
+
+            <section>
+              <h3 className="text-lg font-semibold text-pink-300 mb-2">
+                Outcome
+              </h3>
+              <p>{caseStudy.outcome}</p>
+            </section>
+          </div>
+        ) : (
+          <p className="text-gray-300 mb-4">{description}</p>
+        )}
       </div>
       <div className="mb-4">
         {iframeUrl ? (
@@ -68,7 +103,7 @@ const ProjectCard = ({
               alt={title}
               loading="lazy"
               decoding="async"
-              className="w-full h-full object-cover border-2 border-gray-700 rounded-md"
+              className="w-full h-full object-cover object-top border-2 border-gray-700 rounded-md"
             />
           </button>
         ) : null}
@@ -82,15 +117,14 @@ const ProjectCard = ({
       )}
       <div className="flex space-x-4 mt-auto">
         {websiteUrl && (
-          <a
+          <amiddle
             href={websiteUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block bg-pink-500 hover:bg-pink-600 text-white px-6 py-2 rounded-md transition"
           >
             View Project
-          </a>
-        )}
+          </amiddle>)}
         {githubUrl && (
           <a
             href={githubUrl}

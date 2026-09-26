@@ -1,41 +1,54 @@
-🚀 Frontend Developer Portfolio | Bilyana
-Welcome to the repository for my personal portfolio! This project showcases my transition from game development into a Frontend Engineer, highlighting my technical stack, professional projects, and design philosophy.
+# Bilyana Stefanova — Product Owner & Product Manager
 
-🎨 Preview
-The portfolio features a clean, dark-themed UI with high-contrast accents, focusing on responsiveness and smooth user interactions. It highlights key projects like Best Shop, CalorieMate, and Your Crayon Story.
+This portfolio presents my product ownership and product management experience: turning business and customer needs into clear product direction, a prioritized backlog, and valuable delivery outcomes.
 
-🛠️ Tech Stack
-Core: React.js, TypeScript, JavaScript (ES6+)
+## Profile
 
-Styling: Tailwind CSS
+I am a product professional with hands-on experience owning product vision, roadmap, backlog, requirements, and delivery for a personalized children's storytelling SaaS platform. My earlier roles strengthened my ability to bridge business stakeholders and development teams, clarify requirements, manage customer feedback, and support effective product delivery.
 
-Tools: Git, GitHub, Photoshop
+I focus on helping teams build the right product at the right time by balancing customer value, business goals, delivery effort, scope, and timeline.
 
-Specialty Skills: Unity Game Development, Responsive Design, UI/UX Principles
+## Product Ownership Focus
 
-🌟 Key Features
-Interactive UI: Includes an AnimatedLogo component for a dynamic personal touch.
+- Define and communicate product vision, positioning, roadmaps, and priorities.
+- Own and maintain transparent, well-defined product backlogs.
+- Gather requirements with stakeholders and translate them into actionable user stories, specifications, and acceptance criteria.
+- Partner with engineering, design, and QA throughout discovery, delivery, and iteration.
+- Facilitate Agile ceremonies, including sprint planning, backlog refinement, reviews, and retrospectives.
+- Make informed trade-off decisions across scope, customer value, delivery effort, and business goals.
+- Use customer feedback, analytics, and product performance insights to guide continuous improvement.
 
-Project Showcase: Detailed cards for web applications featuring live demo links and source code access.
+## Relevant Experience
 
-Skill Badges: A visual representation of my technical expertise across frontend and game dev tools.
+### Product Manager — Your Crayon Story (2025–2026)
 
-Responsive Layout: Fully optimized for mobile, tablet, and desktop viewing.
+- Live product: [https://www.yourcrayonstory.com/](https://www.yourcrayonstory.com/)
+- Owned the vision, roadmap, and backlog for a personalized children's storytelling SaaS platform.
+- Translated customer and business needs into product specifications for APIs, authentication, payments, and third-party integrations.
+- Designed the end-to-end journey from landing page through payment and digital delivery.
+- Defined pricing, product positioning, monetization, analytics, and SEO strategy.
 
-📁 Project Highlights
-Best Shop
-A vanilla JavaScript e-commerce site featuring dynamic filtering and LocalStorage cart management. Built to strict Figma-to-code standards.
+### Stakeholder & Delivery Experience
 
-Your Crayon Story (In Progress)
-An interactive web app for children to create personalized coloring books. Built with React, TypeScript, Tailwind CSS, and Supabase.
+- Served as a liaison between a product owner and development team at Airstage, clarifying requirements, tracking progress, and relaying user feedback.
+- Built a customer-focused foundation through customer success, QA, process analysis, coaching, and corporate training roles.
+- Managed affiliate partnerships and campaign performance, using results to identify improvement opportunities.
 
-CalorieMate
-A responsive health-tracking application focused on user-friendly data entry and seamless navigation.
+## Core Skills
 
+- Product vision, roadmap, backlog management, and prioritization
+- Requirements gathering, documentation, user stories, and acceptance criteria
+- Stakeholder management and cross-functional delivery
+- Agile/Scrum ceremonies and delivery planning
+- Customer journey mapping, feedback analysis, and iterative improvement
+- Jira, ClickUp, Confluence-style documentation, Figma, GitHub, and SourceTree
+- SQL, REST APIs, and integration-scoping fluency for effective collaboration with engineering
 
-📬 Contact & Connect
-I am currently looking for opportunities to contribute to innovative projects!
+## Portfolio
 
-https://bibster3.github.io/bilyana-st/
+Live portfolio: [bibster3.github.io/bilyana-st](https://bibster3.github.io/bilyana-st/)
 
-"Let's chat about your team's goals!"
+## Contact
+
+- Email: bilyana.f.st@gmail.com
+- Based in Varna, Bulgaria
