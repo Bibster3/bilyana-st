@@ -1,0 +1,35 @@
+@startuml
+actor Customer
+participant "Website" as Web
+participant "Story generator" as Gen
+participant "Payment provider (Stripe)" as Pay
+
+Customer -> Web : Browse and pick a story to personalize
+Customer -> Web : Enter child's name, age and dedication
+Web -> Gen : Request personalized story
+
+alt Generation succeeds
+  Gen --> Web : Story and preview
+  Web --> Customer : Show visual preview
+  alt Customer buys
+    Customer -> Web : Proceed to checkout
+    Web -> Pay : Create payment
+    alt Payment succeeds
+      Pay --> Web : Payment confirmed
+      Web -> Gen : Generate story PDF
+      Gen --> Web : PDF file
+      Web -> Web : Upload PDF to customer's profile
+      Web --> Customer : Story ready
+      Customer -> Web : Download story
+    else Payment fails
+      Pay --> Web : Payment declined
+      Web --> Customer : Show error, retry checkout
+    end
+  else Customer leaves
+    Customer --> Web : Abandons at preview
+  end
+else Generation fails
+  Gen --> Web : Error
+  Web --> Customer : Show error message
+end
+@enduml

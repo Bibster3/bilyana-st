@@ -1,11 +1,11 @@
 import React from "react";
-import resumeFile from "../assets/Bilyana_Stefanova_Resume.pdf";
+import resumeFile from "../assets/Bilyana_Stefanova_CV.pdf";
 
 const ResumeDownloadButton = () => {
   const downloadResume = () => {
     const link = document.createElement("a");
     link.href = resumeFile;
-    link.setAttribute("download", "Bilyana_Stefanova_Resume.pdf");
+    link.setAttribute("download", "Bilyana_Stefanova_CV.pdf");
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);

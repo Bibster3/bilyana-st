@@ -6,6 +6,10 @@ import candyForestImage from '../assets/candy-forest.webp'
 import dutchShuffleboardImage from '../assets/dutch-shuffleboard.webp'
 import friendscapeImage from '../assets/friendscape.webp'
 import bestShopImage from '../assets/best-shop.webp'
+import journeyDiagram from '../assets/journey-diagram.svg'
+import useCaseDiagram from '../assets/ycs-use-case.png'
+import journeySource from '../assets/your-crayon-story-journey.bpmn?url'
+import useCaseSource from '../assets/ycs-use-case.puml?url&no-inline'
 
 import ImageModal from './ImageModal'
 
@@ -22,10 +26,36 @@ const Portfolio = () => {
           'Designed the complete customer journey from landing page through payment and digital delivery, identifying and removing friction points along the way.',
           'Set pricing, positioning, and the monetization model, balancing customer willingness to pay against margin and delivery cost.',
           'Ran iterative improvement cycles — testing, gathering user feedback, and refining the backlog based on what customers actually did, not just what they said they wanted.',
-          'Built the analytics and SEO strategy behind customer acquisition, so growth decisions were grounded in data rather than guesswork.',
         ],
         outcome:
           'Took the product from an undefined concept to a live, functioning platform with a defined customer journey, pricing model, and ongoing improvement process — currently in production and iterating based on real customer usage.',
+        processModels: {
+          intro:
+            "Two diagrams I created to document how the product works, from the customer's first visit to the downloaded story.",
+          items: [
+            {
+              title: 'BPMN 2.0, customer journey',
+              imageUrl: journeyDiagram,
+              alt: 'BPMN diagram of the Your Crayon Story customer journey with Customer, Platform and Payment provider lanes.',
+              caption:
+                'Shows who does what from landing page to downloaded story, including three decision points (story generated, proceed to purchase, payment successful) and the alternative paths: generation failure, leaving at the preview, and payment retry.',
+              sourceLabel: 'BPMN source',
+              sourceFileName: 'your-crayon-story-journey.bpmn',
+              sourceUrl: journeySource,
+              isWide: true,
+            },
+            {
+              title: 'UML use case diagram',
+              imageUrl: useCaseDiagram,
+              alt: 'UML use case diagram showing what a customer can do in Your Crayon Story, and the role of the payment provider.',
+              caption:
+                'Shows what the product does for its users: choosing a story, personalizing it, previewing, paying, and downloading the finished story.',
+              sourceLabel: 'UML source',
+              sourceFileName: 'ycs-use-case.puml',
+              sourceUrl: useCaseSource,
+            },
+          ],
+        },
       },
       imageUrl: crayonStoryImage,
       websiteUrl: 'https://www.yourcrayonstory.com/',

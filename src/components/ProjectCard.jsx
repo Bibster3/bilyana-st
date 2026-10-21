@@ -77,6 +77,55 @@ const ProjectCard = ({
               </h3>
               <p>{caseStudy.outcome}</p>
             </section>
+
+            {caseStudy.processModels && (
+              <section className="mt-6 border-t border-gray-700 pt-5">
+                <h3 className="text-lg font-semibold text-pink-300 mb-2">
+                  Process models
+                </h3>
+                <p className="mb-4">{caseStudy.processModels.intro}</p>
+                <div className="space-y-6">
+                  {caseStudy.processModels.items.map((item) => (
+                    <figure key={item.title} className="rounded-lg bg-gray-900/60 p-4">
+                      <h4 className="text-base font-semibold text-pink-200 mb-3">
+                        {item.title}
+                      </h4>
+                      <div className="w-full overflow-x-auto rounded-md">
+                        <a
+                          href={item.imageUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-block rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink-400"
+                          aria-label={"Open full-size " + item.title + " diagram in a new tab"}
+                        >
+                          <img
+                            src={item.imageUrl}
+                            alt={item.alt}
+                            loading="lazy"
+                            decoding="async"
+                            className={
+                              item.isWide
+                                ? 'block h-auto w-[1000px] max-w-none rounded-md border border-gray-700 lg:w-full lg:max-w-full'
+                                : 'block h-auto max-w-full rounded-md border border-gray-700'
+                            }
+                          />
+                        </a>
+                      </div>
+                      <figcaption className="mt-3 text-sm text-gray-300">
+                        {item.caption}
+                      </figcaption>
+                      <a
+                        href={item.sourceUrl}
+                        download={item.sourceFileName}
+                        className="mt-3 inline-block text-sm text-pink-300 underline underline-offset-4 hover:text-pink-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink-400 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-800"
+                      >
+                        {item.sourceLabel}
+                      </a>
+                    </figure>
+                  ))}
+                </div>
+              </section>
+            )}
           </div>
         ) : (
           <p className="text-gray-300 mb-4">{description}</p>
