@@ -17,7 +17,7 @@ export default function Footer() {
       >
         <h4 className="text-lg font-semibold text-pink-400">Bilyana Stefanova</h4>
         <p className="text-center text-gray-400">
-          Product Owner &amp; Product Manager | Turning customer needs into valuable product outcomes.
+          Product Manager | Turning customer needs into valuable product outcomes.
         </p>
         <div className="flex space-x-6 text-2xl mt-4">
           <a
@@ -43,7 +43,7 @@ export default function Footer() {
             <FaEnvelope />
           </a>
         </div>
-        <p className="text-sm text-gray-500 mt-4">© {new Date().getFullYear()} Built by Bilyana Stefanova. All rights reserved.</p>
+        <p className="text-sm text-gray-500 mt-4">© {new Date().getFullYear()} All rights reserved.</p>
       </motion.div>
     </footer>
    </LazyMotion>

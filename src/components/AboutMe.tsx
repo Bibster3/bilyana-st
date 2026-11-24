@@ -20,41 +20,15 @@ export default function AboutMe() {
           className="max-w-5xl text-center px-4"
         >
           <h2 className="text-4xl font-bold text-center mb-12 text-white">
-            Product <span className="text-pink-400">Ownership</span>
+            Product <span className="text-pink-400">Management</span>
           </h2>
 
           <p className="text-lg leading-relaxed text-gray-300">
-            I&apos;m Bilyana, a{' '}
-            <span className="text-pink-400 font-semibold">
-              Product Owner and Product Manager
-            </span>{' '}
-            with hands-on experience taking a personalized storytelling SaaS
-            platform from concept to delivery. I own product vision, roadmap,
-            backlog, and priorities, connecting customer value and business
-            goals with practical delivery plans.
+            I&apos;m Bilyana, a <span className="text-pink-400 font-semibold">Product Manager</span> with hands-on experience taking a personalized storytelling SaaS product from concept to launch. At Your Crayon Story I worked with the founder in a two-person team: I designed the customer journey, defined the funnel metrics, modeled the workflow in BPMN, and built the product together with the founder using AI-assisted development, including an AI agent that automates prompts for generating coloring-book images.
           </p>
 
           <p className="text-lg leading-relaxed text-gray-300 mt-4">
-            I work closely with stakeholders to gather and clarify
-            requirements, then translate them into actionable user stories,
-            specifications, and acceptance criteria. I act as a clear bridge
-            between business needs and technical implementation, helping teams
-            build the right product at the right time.
-          </p>
-
-          <p className="text-lg leading-relaxed text-gray-300 mt-4">
-            My approach is collaborative and outcome-focused: I partner with
-            engineering, design, and QA throughout delivery; facilitate Agile
-            ceremonies; and make informed trade-offs across scope, timeline,
-            delivery effort, and customer value. I use feedback, analytics,
-            and product performance to continuously refine priorities.
-          </p>
-
-          <p className="text-lg leading-relaxed text-gray-300 mt-4">
-            Earlier experience in stakeholder liaison, customer success, QA,
-            process analysis, and training gives me a strong customer focus and
-            a practical understanding of change, communication, and smooth
-            product delivery.
+            Earlier I worked in customer support, technical support, call monitoring and training, and as the go-between for a startup owner and its tech team. That gives me a strong customer focus and a practical understanding of how business needs reach engineers.
           </p>
 
           <p className="font-semibold text-center mt-8">
@@ -62,16 +36,14 @@ export default function AboutMe() {
           </p>
 
           <div className="flex flex-wrap justify-center gap-3 mt-10 pt-10">
-            <SkillTag label="Product Vision & Roadmaps" />
-            <SkillTag label="Backlog Prioritization" />
-            <SkillTag label="Requirements & User Stories" />
-            <SkillTag label="Acceptance Criteria" />
-            <SkillTag label="Stakeholder Management" />
-            <SkillTag label="Agile & Scrum" />
-            <SkillTag label="Cross-functional Delivery" />
+            <SkillTag label="Product Discovery & Strategy" />
             <SkillTag label="Customer Journey Mapping" />
+            <SkillTag label="Funnel Metrics & Analytics" />
+            <SkillTag label="BPMN Process Modeling" />
+            <SkillTag label="Backlog Prioritization" />
+            <SkillTag label="Agile & Scrum" />
+            <SkillTag label="AI-Assisted Development" />
             <SkillTag label="Jira & ClickUp" />
-            <SkillTag label="Product Analytics" />
           </div>
         </motion.div>
       </section>

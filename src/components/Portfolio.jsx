@@ -16,19 +16,21 @@ import ImageModal from './ImageModal'
 const Portfolio = () => {
   const projects = [
     {
-      title: 'Your Crayon Story — Product Owner, Concept to Launch',
+      title: 'Your Crayon Story: Product Manager, Concept to Launch',
       caseStudy: {
         challenge:
-          "Your Crayon Story needed to go from an idea — a personalized children's storytelling product — to a working, sellable platform, with no existing roadmap, requirements, or customer journey defined. I owned the product end to end: strategy, requirements, delivery, and go-to-market.",
+          "Your Crayon Story needed to go from an idea — a personalized children's storytelling product — to a working, sellable platform, with no existing roadmap, requirements, or customer journey defined. I worked with the founder, in a two-person team, across product, requirements and delivery.",
         approach: [
-          'Defined the product vision and built the initial roadmap, translating a broad concept into a prioritized backlog based on customer value, delivery effort, and business goals.',
-          'Wrote product requirements and specifications for engineering, working directly with the development team on scope for APIs, authentication, payments, and third-party integrations.',
-          'Designed the complete customer journey from landing page through payment and digital delivery, identifying and removing friction points along the way.',
-          'Set pricing, positioning, and the monetization model, balancing customer willingness to pay against margin and delivery cost.',
-          'Ran iterative improvement cycles — testing, gathering user feedback, and refining the backlog based on what customers actually did, not just what they said they wanted.',
+          'Shaped the product direction and priorities together with the founder, turning a broad concept into a focused first release.',
+          "Designed the customer journey from landing page through payment and delivery; simplified the personalization flow (pick a story, then enter the child's name, age and dedication) and added a visual-preview product page.",
+          'Defined funnel metrics (CTA-to-creation, personalization completion, story generation success, preview-to-checkout, purchase completion) and defined activation as receiving the personalized story.',
+          'Validated the early customer journey through qualitative feedback, as traffic was too low for large-scale A/B tests.',
+          'Built the product together with the founder using AI-assisted development, including an AI agent Chrome extension that automates prompts for generating coloring-book images with visual continuity.',
+          'Decided to pre-generate coloring-book templates to cut AI token costs and keep every image consistent.',
+          'Modeled the end-to-end workflow in BPMN and a UML use case diagram to align the team and explain the product to investors.',
         ],
         outcome:
-          'Took the product from an undefined concept to a live, functioning platform with a defined customer journey, pricing model, and ongoing improvement process — currently in production and iterating based on real customer usage.',
+          'Took the product from an undefined concept to a live platform with a defined customer journey, currently in production.',
         processModels: {
           intro:
             "Two diagrams I created to document how the product works, from the customer's first visit to the downloaded story.",
@@ -60,15 +62,7 @@ const Portfolio = () => {
       imageUrl: crayonStoryImage,
       websiteUrl: 'https://www.yourcrayonstory.com/',
       imageLinkUrl: 'https://www.yourcrayonstory.com/',
-      technologies: [
-        'React',
-        'TypeScript',
-        'Tailwind CSS',
-        'HTML',
-        'Supabase',
-        'GitHub',
-        'Photoshop',
-      ],
+      technologies: [],
     },
     {
       title: 'Best Shop',
@@ -235,7 +229,7 @@ const Portfolio = () => {
 
       <div className="portfolio max-w-6xl mx-auto px-4">
         <h2 className="text-4xl font-bold text-center mb-6 text-white">
-          Selected <span className="text-pink-400">Product & UX Work</span>
+          Selected <span className="text-pink-400">Product Work</span>
         </h2>
         <p className="text-center text-gray-300 max-w-3xl mx-auto mb-12">
           These projects highlight my approach to building thoughtful digital

@@ -183,6 +183,11 @@ const ProjectCard = ({
           </div>
         </div>
       )}
+      {caseStudy && technologies.length === 0 && (
+        <div className="mb-4 text-sm text-gray-300">
+          Built with AI-assisted development together with the founder
+        </div>
+      )}
       <div className="flex space-x-4 mt-auto">
         {websiteUrl && (
           <a
