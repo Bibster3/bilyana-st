@@ -22,6 +22,7 @@ const ProjectCard = ({
   websiteUrl,
   technologies = [],
   onImageClick,
+  className = '',
 }) => {
   const technologyIcons = {
     HTML: <FaHtml5 title="HTML5" />,
@@ -43,7 +44,7 @@ const ProjectCard = ({
       : null
 
   return (
-    <div className="project-card bg-gray-800 rounded-xl shadow-lg p-6 flex flex-col transition-transform duration-300 hover:scale-105 hover:shadow-pink-400/20">
+    <div className={`project-card flex flex-col rounded-xl bg-gray-800 p-6 shadow-lg transition-transform duration-300 hover:scale-105 hover:shadow-pink-400/20 ${className}`}>
       <div className="flex-grow">
         <h2 className="text-2xl font-semibold text-pink-400 mb-2">{title}</h2>
         {caseStudy ? (

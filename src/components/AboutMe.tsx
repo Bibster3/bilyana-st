@@ -10,7 +10,6 @@ export default function AboutMe() {
   return (
     <LazyMotion features={domAnimation}>
       <section
-        id="about"
         className="min-h-screen bg-gray-900 text-white flex items-start justify-center pt-20 px-6 sm:px-10"
       >
         <motion.div

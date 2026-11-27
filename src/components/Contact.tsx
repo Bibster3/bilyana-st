@@ -58,7 +58,7 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="bg-gray-900 text-white py-16 px-4">
+    <section className="bg-gray-900 text-white py-16 px-4">
         <h2 className="text-4xl font-bold text-center mb-12 text-white">Get In <span className="text-pink-400">Touch</span></h2>
         <form onSubmit={handleSubmit} className="space-y-6">
           <input

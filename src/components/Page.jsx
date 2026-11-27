@@ -43,6 +43,40 @@ const Page = () => {
     }
   }, [])
 
+  useEffect(() => {
+    const scrollToHash = () => {
+      const sectionId = window.location.hash.slice(1)
+      if (!sectionId) return
+
+      if (sectionId === 'portfolio') setShowPortfolio(true)
+      if (sectionId === 'contact') setShowContact(true)
+
+      window.requestAnimationFrame(() => {
+        window.requestAnimationFrame(() => {
+          const target = document.getElementById(sectionId)
+          if (!target) return
+
+          const navigation = document.querySelector('[data-site-navigation]')
+          const navHeight = navigation?.getBoundingClientRect().height ?? 0
+          const top = target.getBoundingClientRect().top + window.scrollY
+          const previousScrollBehavior =
+            document.documentElement.style.scrollBehavior
+
+          document.documentElement.style.scrollBehavior = 'auto'
+          window.scrollTo(0, Math.max(0, top - navHeight - 16))
+          window.requestAnimationFrame(() => {
+            document.documentElement.style.scrollBehavior =
+              previousScrollBehavior
+          })
+        })
+      })
+    }
+
+    scrollToHash()
+    window.addEventListener('hashchange', scrollToHash)
+    return () => window.removeEventListener('hashchange', scrollToHash)
+  }, [])
+
   return (
     <div className="min-h-screen bg-gray-900 text-white justify-center flex-col overflow-hidden mx-auto sm:px-10 px-5">
       <main>
@@ -51,9 +85,7 @@ const Page = () => {
         >
           <Spotlight />
         </Suspense>
-        <div className="relative z-50">
-          <NavLinks />
-        </div>
+        <NavLinks />
 
         {/* About Section */}
         <section id="about" className="pt-0 pb-20">

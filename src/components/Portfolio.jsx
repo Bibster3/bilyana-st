@@ -2,9 +2,6 @@ import React, { useRef, useEffect, useState } from 'react'
 
 import ProjectCard from './ProjectCard'
 import crayonStoryImage from '../assets/your-crayon-story.webp'
-import candyForestImage from '../assets/candy-forest.webp'
-import dutchShuffleboardImage from '../assets/dutch-shuffleboard.webp'
-import friendscapeImage from '../assets/friendscape.webp'
 import bestShopImage from '../assets/best-shop.webp'
 import journeyDiagram from '../assets/journey-diagram.svg'
 import useCaseDiagram from '../assets/ycs-use-case.png'
@@ -111,41 +108,6 @@ const Portfolio = () => {
         'Photoshop',
       ],
     },
-    {
-      title: 'Candy Forest',
-      description:
-        'A game experience built with a strong emphasis on engagement, visual clarity, and enjoyable interaction design.',
-      websiteUrl: 'https://bilyanas.itch.io/candy-forest',
-      githubUrl: 'https://gitfront.io/r/Bibster/YAVvvmx6zVqW/CForest-SO/',
-      imageUrl: candyForestImage,
-      technologies: ['Unity', 'CSharp', 'WebGL', 'GitHub', 'Photoshop'],
-    },
-    {
-      title: 'Dutch Shuffleboard',
-      description:
-        'A playful product experience with clearly structured game logic, smooth interaction, and a strong sense of flow.',
-      websiteUrl: 'https://bilyanas.itch.io/dutch-shuffleboard-2',
-      githubUrl:
-        'https://gitfront.io/r/Bibster/iag86sqqZCam/Dutch-Shuffleboard/',
-      imageUrl: dutchShuffleboardImage,
-      technologies: [
-        'Unity',
-        'CSharp',
-        'WebGL',
-        'GitHub',
-        'Photoshop',
-        '3DSMax',
-      ],
-    },
-    {
-      title: 'Friendscape',
-      description:
-        'A puzzle experience designed to balance challenge, usability, and memorable interaction for players.',
-      websiteUrl: 'https://bilyanas.itch.io/friendscape',
-      githubUrl: 'https://gitfront.io/r/Bibster/i8YyuMAT465Z/Friendscape/',
-      imageUrl: friendscapeImage,
-      technologies: ['Unity', 'CSharp', 'WebGL', 'GitHub', 'Photoshop'],
-    },
   ]
 
   const [visibleProjects, setVisibleProjects] = useState([])
@@ -221,7 +183,7 @@ const Portfolio = () => {
   )
 
   return (
-    <section id="portfolio">
+    <section>
       <ImageModal
         imageUrl={selectedImage}
         onClose={() => setSelectedImage(null)}
