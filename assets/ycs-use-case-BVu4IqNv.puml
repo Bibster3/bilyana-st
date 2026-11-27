@@ -1,0 +1,22 @@
+@startuml
+left to right direction
+actor Customer
+actor "Payment provider (Stripe)" as Pay
+
+rectangle "Your Crayon Story" {
+  usecase "Choose a story" as UC0
+  usecase "Personalize the story\n(child's name, age, dedication)" as UC1
+  usecase "Generate story" as UC2
+  usecase "Preview story" as UC3
+  usecase "Pay for story" as UC4
+  usecase "Download story" as UC5
+}
+
+Customer --> UC0
+Customer --> UC1
+Customer --> UC3
+Customer --> UC4
+Customer --> UC5
+UC1 ..> UC2 : <<include>>
+UC4 --> Pay
+@enduml

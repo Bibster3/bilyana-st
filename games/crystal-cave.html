@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+<title>Crystal Cave</title>
+<style>html,body{margin:0;height:100%;background:#050d16;overflow:hidden}canvas{display:block;margin:0 auto;touch-action:none;cursor:pointer}</style>
+</head><body>
+<canvas id="c" aria-label="Crystal Cave, a gem merging puzzle. Drag matching gems together."></canvas>
+<script>
+const cv=document.getElementById('c'),x=cv.getContext('2d'),W=540,H=880,C=5,RW=6,CS=96,BX=30,BY=150,N=C*RW,R=Math.random,PI=Math.PI;
+cv.width=W*2;cv.height=H*2;
+function fit(){const s=Math.min(innerWidth/W,innerHeight/H);cv.style.width=W*s+'px';cv.style.height=H*s+'px';cv.style.marginTop=(innerHeight-H*s)/2+'px'}
+addEventListener('resize',fit);fit();
+const NAMES=['Spark','Shard','Quartz','Opal','Amethyst','Ember','Topaz','Verdelite','Heart of the Cave'];
+const COL=['#5ee7df','#4facfe','#7f7cff','#b06bff','#ff6bd6','#ff8a5c','#ffc94a','#9bff6b','#ffffff'],SIDES=[3,4,5,5,6,6,7,8,8];
+const SERIF='"Palatino Linotype","Book Antiqua",Georgia,serif';
+let g=new Array(N).fill(0),sc=new Array(N).fill(1),pa=[],rings=[],pops=[],drag=null;
+let mode='play',score=0,best=0,maxLv=1,won=false,T=0,muted=false,toast='',toastT=0,AC=null,moved=false;
+try{best=+localStorage.getItem('cc')||0}catch(e){}
+const spores=Array.from({length:55},()=>({x:R()*W,y:R()*H,s:1+R()*2.2,v:6+R()*14,p:R()*9}));
+
+function snd(f,du,ty,v){try{AC=AC||new(window.AudioContext||webkitAudioContext)();const t=AC.currentTime,o=AC.createOscillator(),k=AC.createGain();o.type=ty||'sine';o.frequency.setValueAtTime(f,t);k.gain.setValueAtTime(muted?0:(v||.08),t);k.gain.exponentialRampToValueAtTime(.001,t+du);o.connect(k);k.connect(AC.destination);o.start();o.stop(t+du)}catch(e){}}
+function cxy(i){return[BX+(i%C)*CS+CS/2,BY+((i/C)|0)*CS+CS/2]}
+function at(px,py){const a=Math.floor((px-BX)/CS),b=Math.floor((py-BY)/CS);return a<0||a>=C||b<0||b>=RW?-1:b*C+a}
+function say(s){toast=s;toastT=2.4}
+function burst(px,py,n,c){for(let i=0;i<n;i++){const a=R()*PI*2,s=60+R()*220;pa.push({x:px,y:py,vx:Math.cos(a)*s,vy:Math.sin(a)*s,l:.8,m:.8,c,s:2+R()*3})}}
+function stuck(){if(g.includes(0))return;for(let i=0;i<N;i++)for(let j=i+1;j<N;j++)if(g[i]===g[j]&&g[i]<9)return;mode='stuck'}
+function newGame(){g.fill(0);sc.fill(1);pa=[];rings=[];pops=[];drag=null;score=0;maxLv=1;won=false;mode='play';for(let i=0;i<6;i++)spawn(true);say('Drag two matching gems together to merge them.')}
+function spawn(quiet){
+  const e=[];g.forEach((v,i)=>{if(!v)e.push(i)});
+  if(!e.length){say('The cave is full. Merge gems to make room.');snd(180,.2,'square',.05);return}
+  const i=e[R()*e.length|0],lv=R()<.82?1:2;g[i]=lv;sc[i]=.2;
+  if(!quiet){const[px,py]=cxy(i);burst(px,py,10,COL[lv-1]);snd(420+R()*80,.12,'triangle',.07);stuck()}
+}
+function merge(a,b){
+  const lv=g[b]+1,[px,py]=cxy(b);g[a]=0;g[b]=lv;sc[b]=1.6;score+=lv*10;
+  burst(px,py,18+lv*3,COL[lv-1]);rings.push({x:px,y:py,r:20,l:.6,c:COL[lv-1]});pops.push({x:px,y:py-30,t:'+'+lv*10,l:1});
+  snd(260*Math.pow(1.122,lv*2),.3,'sine',.1);setTimeout(()=>snd(260*Math.pow(1.122,lv*2+4),.3,'sine',.07),90);
+  if(lv>maxLv){maxLv=lv;say('New gem: '+NAMES[lv-1])}
+  if(lv===9&&!won){won=true;mode='win';snd(880,.8,'triangle',.12)}
+  if(score>best){best=score;try{localStorage.setItem('cc',best)}catch(e){}}
+  stuck();
+}
+function pt(e){const r=cv.getBoundingClientRect();return[(e.clientX-r.left)*W/r.width,(e.clientY-r.top)*H/r.height]}
+cv.addEventListener('pointerdown',e=>{
+  const[px,py]=pt(e);
+  if(mode==='win'){mode='play';return}
+  if(mode==='stuck'){newGame();return}
+  if(Math.hypot(px-498,py-38)<20){muted=!muted;return}
+  if(Math.hypot(px-450,py-38)<20){newGame();return}
+  if(px>60&&px<480&&py>768&&py<848){spawn();return}
+  const i=at(px,py);if(i>=0&&g[i]){drag={i,lv:g[i],x:px,y:py};cv.setPointerCapture(e.pointerId)}
+});
+cv.addEventListener('pointermove',e=>{if(drag){const[px,py]=pt(e);drag.x=px;drag.y=py}});
+function drop(e){
+  if(!drag)return;const t=at(drag.x,drag.y),d=drag;drag=null;
+  if(t<0||t===d.i)return;
+  if(!g[t]){g[t]=d.lv;g[d.i]=0;sc[t]=1.25;snd(300,.08,'sine',.05)}
+  else if(g[t]===d.lv&&d.lv<9)merge(d.i,t);
+}
+cv.addEventListener('pointerup',drop);cv.addEventListener('pointercancel',()=>{drag=null});
+
+function rr(px,py,w,h,r,f,s){x.beginPath();x.moveTo(px+r,py);x.arcTo(px+w,py,px+w,py+h,r);x.arcTo(px+w,py+h,px,py+h,r);x.arcTo(px,py+h,px,py,r);x.arcTo(px,py,px+w,py,r);x.closePath();if(f){x.fillStyle=f;x.fill()}if(s){x.strokeStyle=s;x.lineWidth=1.5;x.stroke()}}
+function tx(s,px,py,sz,al,f,w){x.font=(w||700)+' '+sz+'px '+SERIF;x.textAlign=al;x.fillStyle=f;x.fillText(s,px,py)}
+function poly(p){x.beginPath();p.forEach((q,k)=>k?x.lineTo(q[0],q[1]):x.moveTo(q[0],q[1]));x.closePath()}
+function gem(cx,cy,r,lv,ph,s,a){
+  const col=COL[lv-1],n=SIDES[lv-1],pts=(rad,rot)=>Array.from({length:n},(_,k)=>{const t=rot+k*2*PI/n-PI/2;return[Math.cos(t)*rad,Math.sin(t)*rad]});
+  x.save();x.translate(cx,cy+Math.sin(T*2+ph)*2);x.scale(s,s);x.globalAlpha=a==null?1:a;
+  let gl=x.createRadialGradient(0,0,r*.2,0,0,r*1.55);gl.addColorStop(0,col+'88');gl.addColorStop(1,col+'00');x.fillStyle=gl;x.beginPath();x.arc(0,0,r*1.55,0,7);x.fill();
+  if(lv===9){x.save();x.rotate(T*.6);x.fillStyle='rgba(255,255,255,.22)';for(let k=0;k<8;k++){x.rotate(PI/4);x.beginPath();x.moveTo(-4,-r);x.lineTo(0,-r*1.9);x.lineTo(4,-r);x.fill()}x.restore()}
+  const o=pts(r,0),inn=pts(r*.55,PI/n);
+  const f=x.createLinearGradient(-r,-r,r,r);f.addColorStop(0,'#ffffff');f.addColorStop(.38,col);f.addColorStop(1,'#0e1a3a');
+  poly(o);x.fillStyle=f;x.fill();x.strokeStyle='rgba(255,255,255,.75)';x.lineWidth=2;x.stroke();
+  x.strokeStyle='rgba(255,255,255,.35)';x.lineWidth=1.2;x.beginPath();
+  for(let k=0;k<n;k++){x.moveTo(o[k][0],o[k][1]);x.lineTo(inn[k][0],inn[k][1]);x.moveTo(inn[k][0],inn[k][1]);x.lineTo(o[(k+1)%n][0],o[(k+1)%n][1])}x.stroke();
+  poly(inn);x.fillStyle='rgba(255,255,255,.16)';x.fill();x.stroke();
+  x.fillStyle='rgba(255,255,255,.8)';x.beginPath();x.ellipse(-r*.3,-r*.38,r*.1,r*.2,-.6,0,7);x.fill();
+  x.restore();
+}
+function draw(){
+  x.setTransform(2,0,0,2,0,0);
+  let b=x.createLinearGradient(0,0,0,H);b.addColorStop(0,'#06141f');b.addColorStop(.5,'#0c2038');b.addColorStop(1,'#1b0f36');x.fillStyle=b;x.fillRect(0,0,W,H);
+  x.fillStyle='rgba(120,220,255,.05)';for(let i=0;i<3;i++){const x0=60+i*190+Math.sin(T*.3+i)*30;x.beginPath();x.moveTo(x0,0);x.lineTo(x0+70,0);x.lineTo(x0+230,H);x.lineTo(x0+60,H);x.fill()}
+  x.fillStyle='#040b13';for(let i=0;i<9;i++){const h=34+(i*37)%52;x.beginPath();x.moveTo(i*70-10,0);x.lineTo(i*70+60,0);x.lineTo(i*70+25,h);x.fill();x.beginPath();x.moveTo(i*70+10,H);x.lineTo(i*70+80,H);x.lineTo(i*70+45,H-h*.8);x.fill()}
+  for(const s of spores){const yy=((s.y-T*s.v)%H+H)%H;x.fillStyle='rgba(150,240,255,'+(.15+.35*Math.abs(Math.sin(T+s.p))).toFixed(2)+')';x.beginPath();x.arc(s.x+Math.sin(T*.5+s.p)*10,yy,s.s,0,7);x.fill()}
+  tx('Crystal Cave',W/2,60,44,'center','#e8fbff');
+  rr(30,78,150,50,16,'rgba(255,255,255,.07)','rgba(255,255,255,.16)');tx('Score',44,100,14,'left','#8fb9cc',500);tx(''+score,44,120,24,'left','#fff');
+  rr(192,78,120,50,16,'rgba(255,255,255,.07)','rgba(255,255,255,.16)');tx('Best',206,100,14,'left','#8fb9cc',500);tx(''+best,206,120,24,'left','#fff');
+  const nx=Math.min(9,maxLv+1);rr(324,78,186,50,16,'rgba(255,255,255,.07)','rgba(255,255,255,.16)');gem(350,103,15,nx,0,1);tx('Next gem',376,100,14,'left','#8fb9cc',500);tx(NAMES[nx-1],376,120,nx===9?15:18,'left','#fff');
+  [[450,'↻'],[498,muted?'×':'♪']].forEach(q=>{x.beginPath();x.arc(q[0],38,18,0,7);x.fillStyle='rgba(255,255,255,.08)';x.fill();x.strokeStyle='rgba(255,255,255,.2)';x.stroke();tx(q[1],q[0],45,20,'center','#cfefff')});
+  const dl=drag?drag.lv:0;
+  for(let i=0;i<N;i++){
+    const[px,py]=cxy(i),hot=dl&&i!==drag.i&&g[i]===dl&&dl<9;
+    rr(px-CS/2+4,py-CS/2+4,CS-8,CS-8,20,hot?'rgba(255,255,255,'+(.12+.08*Math.sin(T*8)).toFixed(2)+')':'rgba(120,200,255,.06)',hot?COL[dl-1]:'rgba(140,220,255,.14)');
+  }
+  for(let i=0;i<N;i++){sc[i]+=(1-sc[i])*.18;if(g[i]&&!(drag&&drag.i===i)){const[px,py]=cxy(i);gem(px,py,33,g[i],i,sc[i])}}
+  for(const r of rings){x.strokeStyle=r.c;x.globalAlpha=Math.max(0,r.l/.6);x.lineWidth=4;x.beginPath();x.arc(r.x,r.y,r.r,0,7);x.stroke()}x.globalAlpha=1;
+  for(const a of pa){x.globalAlpha=Math.max(0,a.l/a.m);x.fillStyle=a.c;x.fillRect(a.x,a.y,a.s,a.s)}x.globalAlpha=1;
+  for(const p of pops){x.globalAlpha=Math.max(0,p.l);tx(p.t,p.x,p.y,24,'center','#fff')}x.globalAlpha=1;
+  const bt=x.createLinearGradient(60,0,480,0);bt.addColorStop(0,'#1fb6b0');bt.addColorStop(1,'#7a54e6');rr(60,768,420,80,40,bt,'rgba(255,255,255,.35)');
+  tx('Summon a gem',W/2,818,30,'center','#fff');
+  if(toastT>0){x.globalAlpha=Math.min(1,toastT);tx(toast,W/2,752,18,'center','#bfe9f7',500);x.globalAlpha=1}
+  if(drag)gem(drag.x,drag.y-14,38,drag.lv,0,1.12);
+  if(mode!=='play'){
+    x.fillStyle='rgba(4,11,19,.78)';x.fillRect(0,0,W,H);
+    if(mode==='win'){gem(W/2,330,70,9,0,1);tx('Heart of the Cave',W/2,470,40,'center','#fff');tx('You found the rarest gem.',W/2,510,20,'center','#bfe9f7',500);tx('Score '+score,W/2,560,28,'center','#fff');tx('Tap to keep playing',W/2,640,22,'center','#7ee8e0')}
+    else{tx('No merges left',W/2,400,42,'center','#fff');tx('Score '+score+'   Best '+best,W/2,450,24,'center','#bfe9f7',500);tx('Tap to start a new cave',W/2,530,22,'center','#7ee8e0')}
+  }
+}
+let last=performance.now();
+(function loop(n){const dt=Math.min(.033,(n-last)/1000);last=n;T+=dt;toastT-=dt;
+  for(const a of pa){a.x+=a.vx*dt;a.y+=a.vy*dt;a.vy+=260*dt;a.l-=dt}pa=pa.filter(a=>a.l>0);
+  for(const r of rings){r.r+=160*dt;r.l-=dt}rings=rings.filter(r=>r.l>0);
+  for(const p of pops){p.y-=40*dt;p.l-=dt}pops=pops.filter(p=>p.l>0);
+  draw();requestAnimationFrame(loop)})(last);
+newGame();
+</script>
+</body></html>
